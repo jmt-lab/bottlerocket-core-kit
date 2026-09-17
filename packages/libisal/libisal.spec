@@ -1,5 +1,5 @@
 Name: %{_cross_os}libisal
-Version: 2.32.0
+Version: 2.32.1
 Release: 1%{?dist}
 Summary: Library for Intel ISA
 License: BSD-3-Clause
@@ -35,6 +35,7 @@ Requires: %{name}
 autoreconf -fi
 %cross_configure \
   --enable-static \
+  --enable-programs \
   %{nil}
 
 %force_disable_rpath
@@ -48,7 +49,6 @@ autoreconf -fi
 %license LICENSE
 %{_cross_attribution_file}
 %{_cross_libdir}/*.so.*
-%exclude %{_cross_mandir}
 
 %files devel
 %{_cross_libdir}/*.a
@@ -60,5 +60,6 @@ autoreconf -fi
 
 %files -n %{_cross_os}igzip
 %{_cross_bindir}/igzip
+%{_cross_mandir}/man1/igzip.1*
 
 %changelog
